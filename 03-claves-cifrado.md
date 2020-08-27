@@ -13,7 +13,7 @@ ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)
 ## Fichero de configuración
 
 ```
-cat > encryption-config.yaml <<EOF
+cat > Config/encryption-config.yaml <<EOF
 kind: EncryptionConfig
 apiVersion: v1
 resources:
