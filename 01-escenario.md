@@ -59,6 +59,14 @@ ssh -i .vagrant/machines/node${i}/libvirt/private_key vagrant@node${i} 'sudo chm
 done
 ```
 
+Cambiamos la clave privada de vagrant por si fuese necesario más adelante:
+
+```
+for i in controller{1..3} node{1..3}; do
+cp ~/.ssh/k8s_debian_vagrant .vagrant/machines/${i}/libvirt/private_key
+done
+```
+
 ## Definición del hostname
 
 (Debería hacerse en el Vagrantfile)
