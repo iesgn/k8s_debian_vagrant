@@ -104,9 +104,9 @@ certificado de kube-controller-manager:
 
 ```
 for instance in controller{1..3}; do 
-scp Config/kube-controller-manager-key.pem root@${instance}:/var/lib/kubernetes/
-scp Config/kube-controller-manager.pem root@${instance}:/var/lib/kubernetes/
-scp Config/kube-controller-manager.kubeconfig root@${instance}:/var/lib/kubernetes/
+scp Config/kube-controller-manager-key.pem root@${instance}:
+scp Config/kube-controller-manager.pem root@${instance}:
+scp Config/kube-controller-manager.kubeconfig root@${instance}:
 done
 ```
 
@@ -128,9 +128,9 @@ certificado de kube-controller-manager:
 
 ```
 for instance in controller{1..3}; do 
-scp Config/kube-scheduler-key.pem root@${instance}:/var/lib/kubernetes/
-scp Config/kube-scheduler.pem root@${instance}:/var/lib/kubernetes/
-scp Config/kube-scheduler.kubeconfig root@${instance}:/var/lib/kubernetes/
+scp Config/kube-scheduler-key.pem root@${instance}:
+scp Config/kube-scheduler.pem root@${instance}:
+scp Config/kube-scheduler.kubeconfig root@${instance}:
 done
 ```
 
