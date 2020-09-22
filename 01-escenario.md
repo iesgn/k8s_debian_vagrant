@@ -13,9 +13,17 @@ Instalamos qemu-kvm, libvirt-daemon-system y añadimos el usuario al grupo libvi
 
 ## Vagrant
 
+Creamos el par de claves ssh que usaremos en el despliegue:
+
+```
+ssh-keygen -t ecdsa ~/.ssh/k8s_debian_vagrant
+```
+
 Clonamos el repositorio y levantamos el escenario:
 
 ```
+git clone https://github.com/iesgn/k8s_debian_vagrant.git
+cd k8s_debian_vagrant
 vagrant up
 ```
 
