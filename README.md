@@ -15,14 +15,15 @@ un nivel de configuración "estándar".
 
 ## Parámetros del despliegue:
 
+* IP Flotante: IP pública o privada que corresponda
 * Red externa: 192.168.122.0/24
-* Red interna: 10.0.0.0/24
-  * controller1: 10.0.0.2
-  * controller2: 10.0.0.3
-  * controller3: 10.0.0.4
-  * node1: 10.0.0.12
-  * node2: 10.0.0.13
-  * node3: 10.0.0.14
+* Red interna: 10.0.10.0/24
+  * controller1: 10.0.10.2
+  * controller2: 10.0.10.3
+  * controller3: 10.0.10.4
+  * node1: 10.0.10.12
+  * node2: 10.0.10.13
+  * node3: 10.0.10.14
 * Service-cluster-ip-range: 10.32.0.0/24
 * cluster-cidr: 10.200.0.0/16
 * pod-cidr: 10.200.X.0/24

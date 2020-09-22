@@ -6,31 +6,30 @@ Se crean en la máquina cliente los ficheros kubeconfig del controller
 manager, scheduler, kubelet y kube-proxy que se usarán en las
 siguientes secciones.
 
-### Kubelet
+En primer lugar hay que definir la variable de entorno FLOATING_IP, por ejemplo:
 
 ```
+FLOATING_IP=5.4.3.2
+```
+
+### Kubelet
+
+(Hay que poner la dirección 10.0.0.1 del balanceador de carga, no la del controller1)
+
+```
+{
 cd Config/
 for instance in node{1..3}; do
-  kubectl config set-cluster k8s-cluster \
-    --certificate-authority=ca.pem \
-    --embed-certs=true \
-    --server=https://127.0.0.1:6443 \
-    --kubeconfig=${instance}.kubeconfig
+  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://${FLOATING_IP}:6443 --kubeconfig=${instance}.kubeconfig
 
-  kubectl config set-credentials system:node:${instance} \
-    --client-certificate=${instance}.pem \
-    --client-key=${instance}-key.pem \
-    --embed-certs=true \
-    --kubeconfig=${instance}.kubeconfig
+  kubectl config set-credentials system:node:${instance} --client-certificate=${instance}.pem --client-key=${instance}-key.pem --embed-certs=true --kubeconfig=${instance}.kubeconfig
 
-  kubectl config set-context default \
-    --cluster=k8s-cluster \
-    --user=system:node:${instance} \
-    --kubeconfig=${instance}.kubeconfig
+  kubectl config set-context default --cluster=k8s-cluster --user=system:node:${instance} --kubeconfig=${instance}.kubeconfig
 
   kubectl config use-context default --kubeconfig=${instance}.kubeconfig
 done
 cd ..
+}
 ```
 
 Resultados:
@@ -54,26 +53,15 @@ done
 ```
 {
   cd Config/
-  kubectl config set-cluster k8s-cluster \
-    --certificate-authority=ca.pem \
-    --embed-certs=true \
-    --server=https://127.0.0.1:6443 \
-    --kubeconfig=kube-proxy.kubeconfig
+  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://${FLOATING_IP}:6443 --kubeconfig=kube-proxy.kubeconfig
 
-  kubectl config set-credentials system:kube-proxy \
-    --client-certificate=kube-proxy.pem \
-    --client-key=kube-proxy-key.pem \
-    --embed-certs=true \
-    --kubeconfig=kube-proxy.kubeconfig
+  kubectl config set-credentials system:kube-proxy --client-certificate=kube-proxy.pem --client-key=kube-proxy-key.pem --embed-certs=true --kubeconfig=kube-proxy.kubeconfig
 
-  kubectl config set-context default \
-    --cluster=k8s-cluster \
-    --user=system:kube-proxy \
-    --kubeconfig=kube-proxy.kubeconfig
+  kubectl config set-context default --cluster=k8s-cluster --user=system:kube-proxy --kubeconfig=kube-proxy.kubeconfig
 
   kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
-}
 cd ..
+}
 ```
 
 Resultados:
@@ -95,7 +83,7 @@ done
 ```
 {
   cd Config/
-  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://127.0.0.1:6443 --kubeconfig=kube-controller-manager.kubeconfig
+  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://${FLOATING_IP}:6443 --kubeconfig=kube-controller-manager.kubeconfig
   kubectl config set-credentials system:kube-controller-manager --client-certificate=kube-controller-manager.pem --client-key=kube-controller-manager-key.pem --embed-certs=true --kubeconfig=kube-controller-manager.kubeconfig
   kubectl config set-context default --cluster=k8s-cluster --user=system:kube-controller-manager --kubeconfig=kube-controller-manager.kubeconfig
   kubectl config use-context default --kubeconfig=kube-controller-manager.kubeconfig
@@ -119,7 +107,7 @@ done
 ```
 {
   cd Config/
-  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://127.0.0.1:6443 --kubeconfig=kube-scheduler.kubeconfig
+  kubectl config set-cluster k8s-cluster --certificate-authority=ca.pem --embed-certs=true --server=https://${FLOATING_IP}:6443 --kubeconfig=kube-scheduler.kubeconfig
   kubectl config set-credentials system:kube-scheduler --client-certificate=kube-scheduler.pem --client-key=kube-scheduler-key.pem --embed-certs=true --kubeconfig=kube-scheduler.kubeconfig
   kubectl config set-context default --cluster=k8s-cluster --user=system:kube-scheduler --kubeconfig=kube-scheduler.kubeconfig
   kubectl config use-context default --kubeconfig=kube-scheduler.kubeconfig
@@ -148,7 +136,7 @@ Lo creamos en el equipo cliente, que es desde donde se va a utilizar:
   kubectl config set-cluster k8s-cluster \
     --certificate-authority=ca.pem \
     --embed-certs=true \
-    --server=https://127.0.0.1:6443 \
+    --server=https://${FLOATING_IP}:6443 \
     --kubeconfig=admin.kubeconfig
 
   kubectl config set-credentials admin \
