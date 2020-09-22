@@ -12,9 +12,17 @@ En primer lugar hay que definir la variable de entorno FLOATING_IP, por ejemplo:
 FLOATING_IP=5.4.3.2
 ```
 
-### Kubelet
+Para este apartado será necesario instalar kubectl, el cliente de
+kubernetes de línea de comandos. Hay varias formas de hacer esto, en
+un equipo debian se puede usar la versión disponible para bullseye
+(testing):
 
-(Hay que poner la dirección 10.0.0.1 del balanceador de carga, no la del controller1)
+```
+wget http://ftp.debian.org/debian/pool/main/k/kubernetes/kubernetes-client_1.18.6-1_amd64.deb
+sudo dpkg -i kubernetes-client_1.18.6-1_amd64.deb
+```
+
+### Kubelet
 
 ```
 {
