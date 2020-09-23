@@ -29,7 +29,7 @@ cp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem service-account-key.pem s
 ## Configuración del API server
 
 ```
-INTERNAL_IP=$(ip -o -4 a|grep 10.0.0|awk '{print $4}'|cut -d/ -f1)
+INTERNAL_IP=$(ip -o -4 a|grep 10.0.10|awk '{print $4}'|cut -d/ -f1)
 cat << EOF >> /etc/systemd/system/kube-apiserver.service
 [Unit]
 Description=Kubernetes API Server
@@ -51,7 +51,7 @@ ExecStart=/usr/bin/kube-apiserver \\
   --etcd-cafile=/var/lib/kubernetes/ca.pem \\
   --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \\
   --etcd-keyfile=/var/lib/kubernetes/kubernetes-key.pem \\
-  --etcd-servers=https://10.0.0.2:2379,https://10.0.0.3:2379,https://10.0.0.4:2379 \\
+  --etcd-servers=https://10.0.10.2:2379,https://10.0.10.3:2379,https://10.0.10.4:2379 \\
   --event-ttl=1h \\
   --encryption-provider-config=/var/lib/kubernetes/encryption-config.yaml \\
   --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \\
@@ -79,7 +79,7 @@ Hacemos uso de la sincronización de hojas de tmux y creamos una unidad
 de systemd para el servicio:
 
 ```
-INTERNAL_IP=$(ip -o -4 a|grep 10.0.0|awk '{print $4}'|cut -d/ -f1)
+INTERNAL_IP=$(ip -o -4 a|grep 10.0.10|awk '{print $4}'|cut -d/ -f1)
 cat << EOF > /etc/systemd/system/kube-controller-manager.service
 [Unit]
 Description=Kubernetes Controller Manager
