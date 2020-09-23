@@ -23,7 +23,7 @@ necesarias:
 ```
 mkdir -p /var/lib/kubernetes/
 mkdir -p /etc/kubernetes/config/
-cp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem service-account-key.pem service-account.pem encryption-config.yaml /var/lib/kubernetes/
+cp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem service-account-key.pem service-account.pem encryption-config.yaml kube-scheduler.kubeconfig /var/lib/kubernetes/
 ```
 
 ## Configuración del API server
