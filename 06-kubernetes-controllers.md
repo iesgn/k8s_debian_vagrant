@@ -224,6 +224,7 @@ kubernetes API pueda acceder a la API de kubelet de los nodos:
 Creamos el ClusterRole kube-apiserver-to-kubelet.yaml:
 
 ```
+cat <<EOF > Config/kube-apiserver-to-kubelet.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
@@ -243,11 +244,13 @@ rules:
       - nodes/metrics
     verbs:
       - "*"
+EOF
 ```
 
 Creamos el ClusterRoleBinding correspondiente kube-apiserver.yaml:
 
 ```
+cat <<EOF > Config/kube-apiserver.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
@@ -261,14 +264,17 @@ subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
     name: kubernetes
+EOF
 ```
 
 Y los aplicamos con el usuario admin:
 
 ```
-kubectl apply --kubeconfig Config/admin.kubeconfig -f Config/kube-apiserver-to-kubelet.yaml 
+kubectl apply --kubeconfig Config/admin.kubeconfig -f Config/kube-apiserver-to-kubelet.yaml
+
 clusterrole.rbac.authorization.k8s.io/system:kube-apiserver-to-kubelet created
 
-kubectl apply --kubeconfig Config/admin.kubeconfig -f Config/kube-apiserver.yaml 
+kubectl apply --kubeconfig Config/admin.kubeconfig -f Config/kube-apiserver.yaml
+
 clusterrolebinding.rbac.authorization.k8s.io/system:kube-apiserver created
 ```
