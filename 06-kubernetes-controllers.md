@@ -30,7 +30,7 @@ cp ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem service-account-key.pem s
 
 ```
 INTERNAL_IP=$(ip -o -4 a|grep 10.0.10|awk '{print $4}'|cut -d/ -f1)
-cat << EOF >> /etc/systemd/system/kube-apiserver.service
+cat << EOF > /etc/systemd/system/kube-apiserver.service
 [Unit]
 Description=Kubernetes API Server
 Documentation=https://github.com/kubernetes/kubernetes
