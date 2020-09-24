@@ -9,14 +9,18 @@ vagrant                                   2.2.3+dfsg-1
 vagrant-libvirt                           0.0.45-2
 ```
 
-Instalamos qemu-kvm, libvirt-daemon-system y añadimos el usuario al grupo libvirt, de manera que pueda lanzar máquinas virtuales en qemu:///system
+Instalamos qemu-kvm, libvirt-daemon-system y añadimos el usuario al
+grupo libvirt, de manera que pueda lanzar máquinas virtuales en
+qemu:///system
 
 ## Vagrant
 
-Creamos el par de claves ssh que usaremos en el despliegue:
+Creamos el par de claves ssh que usaremos en el despliegue, lanzamos ssh-agent (si no lo hubiera en la sesión actual) y añadimos la clave generada al agente:
 
 ```
 ssh-keygen -t ecdsa ~/.ssh/k8s_debian_vagrant
+ssh-agent /bin/bash
+ssh-add ~/.ssh/k8s_debian_vagrant
 ```
 
 Clonamos el repositorio y levantamos el escenario:
