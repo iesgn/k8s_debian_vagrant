@@ -18,7 +18,7 @@ qemu:///system
 Creamos el par de claves ssh que usaremos en el despliegue, lanzamos ssh-agent (si no lo hubiera en la sesión actual) y añadimos la clave generada al agente:
 
 ```
-ssh-keygen -t ecdsa ~/.ssh/k8s_debian_vagrant
+ssh-keygen -t ecdsa -f ~/.ssh/k8s_debian_vagrant
 ssh-agent /bin/bash
 ssh-add ~/.ssh/k8s_debian_vagrant
 ```
