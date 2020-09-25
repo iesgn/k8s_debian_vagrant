@@ -5,10 +5,24 @@ nodos sobre los que se van a ejecutar las cargar de trabajo normales.
 
 ## Instalación de los paquetes
 
+Instalamos los siguientes paquetes de los repositorios de debian:
+
 ```
 apt-get install --no-install-recommends runc containerd golang-github-appc-cni-dev \
-kubernetes-client kubernetes-node
+kubernetes-client kubernetes-node socat conntrack ipset
 ```
+
+Instalamos el binario crictl directamente desde el sitio del proyecto,
+ya que aún no está empaquetado:
+
+```
+wget -q --show-progress --https-only --timestamping \
+  https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.18.0/crictl-v1.18.0-linux-amd64.tar.gz
+tar -xvf crictl-v1.18.0-linux-amd64.tar.gz
+chmod +x crictl
+mv crictl /usr/local/bin
+```
+
 
 ## Configuración de la red CNI
 
