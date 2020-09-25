@@ -82,7 +82,6 @@ Hacemos uso de la sincronización de hojas de tmux y creamos una unidad
 de systemd para el servicio:
 
 ```
-INTERNAL_IP=$(ip -o -4 a|grep 10.0.10|awk '{print $4}'|cut -d/ -f1)
 cat << EOF > /etc/systemd/system/kube-controller-manager.service
 [Unit]
 Description=Kubernetes Controller Manager
@@ -180,7 +179,7 @@ Añadimos al fichero de /etc/haproxy/haproxy.cfg las líneas:
 
 ```
 frontend k8s-api
-    bind 127.0.0.1:6443
+    bind 0.0.0.0:6443
     mode tcp
     option tcplog
     timeout client 300000
