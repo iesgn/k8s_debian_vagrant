@@ -188,3 +188,12 @@ Desde el equipo cliente ejecutamos:
 ```
 kubectl get nodes --kubeconfig Config/admin.kubeconfig
 ```
+
+Y obtenemos como salida los nodos listos:
+
+```
+NAME    STATUS   ROLES    AGE     VERSION
+node1   Ready    <none>   4m13s   v1.18.6
+node2   Ready    <none>   4m13s   v1.18.6
+node3   Ready    <none>   4m13s   v1.18.6
+```
