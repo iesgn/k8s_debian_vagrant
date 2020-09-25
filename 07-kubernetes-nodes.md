@@ -16,7 +16,7 @@ Definirmos la red para los pods de cada nodo, con una subred /24 del
 CIDR del clúster (10.200.0.0/16):
 
 ```
-export POD_CIDR=$(echo 10.200.`ip -o -4 a|grep 10.0.0|awk '{print $4}'|cut -d/ -f1|cut -d. -f4`.0/24)
+export POD_CIDR=$(echo 10.200.`ip -o -4 a|grep 10.0.10|awk '{print $4}'|cut -d/ -f1|cut -d. -f4`.0/24)
 ```
 
 ```
@@ -56,6 +56,7 @@ directorio /var/lib/kubelet que se ha creado al instalar el paquete
 kubernetes-node:
 
 ```
+HOSTNAME=$(hostname -s)
 mv /root/${HOSTNAME}*pem /var/lib/kubelet
 mkdir /var/lib/kubernetes
 mv /root/ca.pem /var/lib/kubernetes
