@@ -16,13 +16,25 @@ Instalamos el binario crictl directamente desde el sitio del proyecto,
 ya que aún no está empaquetado:
 
 ```
+{
 wget -q --show-progress --https-only --timestamping \
   https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.18.0/crictl-v1.18.0-linux-amd64.tar.gz
 tar -xvf crictl-v1.18.0-linux-amd64.tar.gz
 chmod +x crictl
 mv crictl /usr/local/bin
+}
 ```
 
+Instalamos los plugins de cni (binarios que se van a ubicar en el
+directorio /opt/cni/bin que es la ubicación por defecto para el
+servicio kubelet):
+
+```
+wget -q --show-progress --https-only --timestamping \
+  https://github.com/containernetworking/plugins/releases/download/v0.8.6/cni-plugins-linux-amd64-v0.8.6.tgz
+mkdir -p   /opt/cni/bin
+tar -xvf cni-plugins-linux-amd64-v0.8.6.tgz -C /opt/cni/bin/
+```
 
 ## Configuración de la red CNI
 
