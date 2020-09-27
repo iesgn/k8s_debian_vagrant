@@ -201,8 +201,8 @@ backend k8s-api
     default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 25$
 
         server controller1 ${C1_EXTERNAL_IP}:6443 check
-        server controller2 ${C1_EXTERNAL_IP}:6443 check
-        server controller3 ${C1_EXTERNAL_IP}:6443 check
+        server controller2 ${C2_EXTERNAL_IP}:6443 check
+        server controller3 ${C3_EXTERNAL_IP}:6443 check
 EOF
 }
 ```
