@@ -18,7 +18,7 @@ kubectl config set-credentials admin \
     --client-key=admin-key.pem
 
 kubectl config set-context k8s-cluster \
-    --cluster=k8s-cluster
+    --cluster=k8s-cluster --user=admin
 
 kubectl config use-context k8s-cluster
 }
@@ -30,3 +30,22 @@ kubectl config use-context k8s-cluster
 kubectl get componentstatuses
 ```
 
+```
+NAME                 STATUS    MESSAGE              ERROR
+controller-manager   Healthy   ok                   
+scheduler            Healthy   ok                   
+etcd-1               Healthy   {"health": "true"}   
+etcd-0               Healthy   {"health": "true"}   
+etcd-2               Healthy   {"health": "true"}
+```
+
+```
+kubectl get nodes
+```
+
+```
+NAME    STATUS   ROLES    AGE   VERSION
+node1   Ready    <none>   40h   v1.18.6
+node2   Ready    <none>   40h   v1.18.6
+node3   Ready    <none>   40h   v1.18.6
+```
