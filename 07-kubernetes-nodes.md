@@ -75,6 +75,20 @@ cat <<EOF | tee /etc/cni/net.d/99-loopback.conf
 EOF
 ```
 
+## Configración de containerd
+
+```
+cat << EOF | sudo tee /etc/containerd/config.toml
+[plugins]
+  [plugins.cri.containerd]
+    snapshotter = "overlayfs"
+    [plugins.cri.containerd.default_runtime]
+      runtime_type = "io.containerd.runtime.v1.linux"
+      runtime_engine = "/usr/bin/runc"
+      runtime_root = ""
+EOF
+```
+
 ## Configuración kubelet
 
 Ubicamos los certificados, la clave y el kubeconfig de cada nodo en el
