@@ -144,6 +144,8 @@ leaderElection:
 EOF
 ```
 
+Nota: [Hilo de twitter en el que se explica el funcionamiento del planificador de kubernetes](https://twitter.com/danielepolencic/status/1309090938673868801)
+
 Finalmente iniciamos todos los servicios:
 
 ```
