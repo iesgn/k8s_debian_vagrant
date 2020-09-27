@@ -182,7 +182,7 @@ C1_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print 
 C2_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print $4}'|cut -d/ -f1)
 C3_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print $4}'|cut -d/ -f1)
 
-sudo cat <<EOF |tee /etc/haproxy/haproxy.cfg
+cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg
 
 frontend k8s-api
     bind 0.0.0.0:6443
@@ -255,7 +255,7 @@ EOF
 Creamos el ClusterRoleBinding correspondiente kube-apiserver.yaml:
 
 ```
-sudo cat <<EOF |tee Config/kube-apiserver.yaml
+cat <<EOF > Config/kube-apiserver.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
