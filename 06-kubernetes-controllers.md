@@ -255,7 +255,7 @@ EOF
 Creamos el ClusterRoleBinding correspondiente kube-apiserver.yaml:
 
 ```
-cat <<EOF > Config/kube-apiserver.yaml
+sudo cat <<EOF |tee Config/kube-apiserver.yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
