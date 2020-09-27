@@ -210,10 +210,13 @@ EOF
 Donde hemos puesto las direcciones IP "externas" de los
 controladores.
 
-Comprobamos el funcionamiento del clúster y del balanceador desde el
-equipo cliente usando las credenciales de admin:
+Reiniciamos el balanceador de carga y comprobamos el funcionamiento
+del clúster y del balanceador desde el equipo cliente usando las
+credenciales de admin:
 
 ```
+sudo systemctl restart haproxy
+
 kubectl get componentstatuses --kubeconfig Config/admin.kubeconfig 
 
 NAME                 STATUS    MESSAGE              ERROR
