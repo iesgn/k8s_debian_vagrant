@@ -8,6 +8,7 @@ FLOATING_IP=...
 
 ```
 {
+cd Config/
 kubectl config set-cluster k8s-cluster \
     --certificate-authority=ca.pem \
     --embed-certs=true \
@@ -21,6 +22,7 @@ kubectl config set-context k8s-cluster \
     --cluster=k8s-cluster --user=admin
 
 kubectl config use-context k8s-cluster
+cd ..
 }
 ```
 
