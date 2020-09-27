@@ -44,8 +44,10 @@ HOSTNAME=$(hostname -s)
 
 ### Configuración del servicio
 
+El paquete etcd proporciona un fichero /etc/default/etcd, pero en este caso lo sobrescribimos:
+
 ```
-cat << EOF >> /etc/default/etcd
+cat << EOF > /etc/default/etcd
 ETCD_NAME="${HOSTNAME}"
 ETCD_DATA_DIR="/var/lib/etcd"
 ETCD_LISTEN_PEER_URLS="https://${INTERNAL_IP}:2380"
