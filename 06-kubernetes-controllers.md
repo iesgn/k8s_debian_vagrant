@@ -178,6 +178,7 @@ apt install haproxy
 Añadimos al fichero de /etc/haproxy/haproxy.cfg las líneas:
 
 ```
+{
 C1_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print $4}'|cut -d/ -f1)
 C2_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print $4}'|cut -d/ -f1)
 C3_EXTERNAL_IP=$(ssh root@controller1 ip -o -4 a s|grep 192.168.121|awk '{print $4}'|cut -d/ -f1)
@@ -202,6 +203,8 @@ backend k8s-api
         server controller1 ${C1_EXTERNAL_IP}:6443 check
         server controller2 ${C1_EXTERNAL_IP}:6443 check
         server controller3 ${C1_EXTERNAL_IP}:6443 check
+EOF
+}
 ```
 
 Donde hemos puesto las direcciones IP "externas" de los
