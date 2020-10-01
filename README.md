@@ -30,6 +30,15 @@ Una máquina con 16GiB de RAM con capacidad para ejecutar KVM (si es
 una máquina virtual tiene que estar adecuadamente configurada la
 virtualización anidada).
 
+## Características
+
+* etcd 3.2.26
+* runc 1.0.0
+* containerd 1.4.1
+* cni 0.8.6
+* kubernetes 1.18.6
+* coredns 1.7.0
+
 ## Parámetros del despliegue:
 
 * IP Flotante: IP pública o privada que corresponda
@@ -48,3 +57,16 @@ virtualización anidada).
 ## Esquema de red
 
 ![esquema_red](./img/esquema_red.png)
+
+## Índice
+
+* [Configuración del escenario](01-escenario.md)
+* [CA y certificados](02-CA.md)
+* [Claves de cifrado](03-claves-cifrado.md)
+* [Configuración de etcd](04-etcd.md)
+* [Ficheros de configuración de kubernetes](05-ficheros-configuracion-k8s.md)
+* [Configuración de los controladores](06-kubernetes-controllers.md)
+* [Configuración de los nodos](07-kubernetes-nodes.md)
+* [kubeconfig para admin](08-configuracion-kubectl.md)
+* [Definición de rutas estáticas](09-rutas-estaticas.md)
+* [Configuración del coreDNS](10-coredns.md)
