@@ -2,16 +2,33 @@
 
 Adaptación de
 [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
-utilizando un despliegue local con vagrant sobre KVM/libvirt con
-imágenes de Debian Bullseye (testing) en lugar de un despliegue con
-infraestructura de nube pública con gcloud.
+utilizando un despliegue con vagrant sobre KVM/libvirt con imágenes de
+Debian Bullseye (testing) en lugar de un despliegue con
+infraestructura de nube pública con gcloud. Esto permite realizar el
+despliegue en una instancia de cualquier nube pública o privada o una
+máquina virtual o física en cualquier ubicación.
 
-La idea principal es utilizar los paquetes con los binarios que
-proporciona el proyecto debian para la mayoría de los componentes, en
-algunos casos estos paquetes incluyen parte del trabajo posterior de
-configuración (algunas unidades de systemd o ficheros de
-configuración), pero todavía no se trata de paquetes finalizados y con
-un nivel de configuración "estándar".
+El despliegue que se realiza es muy similar al original, pero en este
+caso se utilizan los paquetes binarios que proporciona el proyecto
+debian para la mayoría de los componentes, en algunos casos estos
+paquetes incluyen parte del trabajo posterior de configuración
+(algunas unidades de systemd o ficheros de configuración), aunque en
+otros de estos paquetes están en una fase inicial de desarrollo y
+carecen de algunos elementos habituales de configuración. En
+particular, utilizamos paquetes binarios para etcd, kubernetes-master,
+kubernetes-node, kubernetes-client, containerd y runc.
+
+Al igual que el despliegue original, el propósito de instalar
+kubernetes paso a paso es principalmente comprender los elementos que
+lo componen y la forma de configurarlos, por lo que el clúster que
+terminamos configurando dista bastante de uno listo para utilizar en
+producción.
+
+## Requisitos
+
+Una máquina con 16GiB de RAM con capacidad para ejecutar KVM (si es
+una máquina virtual tiene que estar adecuadamente configurada la
+virtualización anidada).
 
 ## Parámetros del despliegue:
 

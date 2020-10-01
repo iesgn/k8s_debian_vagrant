@@ -58,7 +58,8 @@ replicaset.apps/coredns-5677dc4cdb   2         2         2       2m
 ## Verificación
 
 Lanzamos un contenedor (busybox) y comprobamos que realiza la
-resolución DNS de forma correcta:
+resolución DNS de forma correcta (se pide que nos devuelva la
+dirección IP del API server, que debe ser la 10.32.0.1):
 
 ```
 kubectl run busybox --image=busybox:1.28 --command -- sleep 3600

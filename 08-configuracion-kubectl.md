@@ -7,7 +7,6 @@ cada vez que lo usamos.
 FLOATING_IP=...
 
 ```
-{
 cd Config/
 kubectl config set-cluster k8s-cluster \
     --certificate-authority=ca.pem \
@@ -23,7 +22,6 @@ kubectl config set-context k8s-cluster \
 
 kubectl config use-context k8s-cluster
 cd ..
-}
 ```
 
 ## Comprobación

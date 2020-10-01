@@ -1,8 +1,7 @@
 # Configuración de etcd
 
 Accedemos a los tres controladores con el mecanismo de tmux de
-sincronización de hojas que se explica en el primer apartado del
-curso.
+sincronización de hojas que se explica en el primer apartado.
 
 ## Instalación
 

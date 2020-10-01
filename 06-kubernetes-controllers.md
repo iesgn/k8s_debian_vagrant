@@ -168,13 +168,14 @@ kubectl create clusterrolebinding root-cluster-admin-binding \
 
 ## Balanceador de carga externo
 
-En el equipo que actúa como cliente vamos a instalar un balanceador de
-carga con HAProxy que actuará como un balanceador de carga expuesto al
-exterior del kubernetes API server, para simular una situación lo más
-realista posible.
+En el despliegue original se utiliza el balanceador proporcionado por
+la nube de infraestructura de Google, pero en este caso vamos a hacer
+una configuración más genérica, instalando un balanceador de carga con
+HAProxy que actuará como un balanceador de carga expuesto al exterior
+del kubernetes API server.
 
 ```
-apt install haproxy
+sudo apt install haproxy
 ```
 
 Añadimos al fichero de /etc/haproxy/haproxy.cfg las líneas:

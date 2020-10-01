@@ -2,7 +2,8 @@
 
 ## Versiones del software utilizado
 
-Sobre un equipo con Debian buster (10), instalamos los paquetes vagrant y vagrant-libvirt:
+Sobre un equipo con Debian buster (10), instalamos los paquetes
+vagrant y vagrant-libvirt:
 
 ```
 vagrant                                   2.2.3+dfsg-1
