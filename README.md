@@ -16,7 +16,7 @@ un nivel de configuración "estándar".
 ## Parámetros del despliegue:
 
 * IP Flotante: IP pública o privada que corresponda
-* Red externa: 192.168.122.0/24
+* Red "externa": 192.168.121.0/24
 * Red interna: 10.0.10.0/24
   * controller1: 10.0.10.2
   * controller2: 10.0.10.3
